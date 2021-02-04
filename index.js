@@ -94,11 +94,12 @@ wheatBread.prototype.move = function(){
 //}
 
 //pecker functions{
-var pecker = function(x,y,path1,path2){
+var pecker = function(x,y,path1,path2,path3){
     this.x = x;
     this.y = y;
     this.path1 = path1;
     this.path2 = path2;
+    this.path3 = path3;
 };
 pecker.prototype.draw = function() {
     textures("Pecker",this.x,this.y);
@@ -112,6 +113,7 @@ pecker.prototype.attack = function(){
         **/
         if(breadUsed[k].x - this.x < 50&&breadUsed[k].x - this.x > -50&&breadUsed[k].y-this.y < 50&&breadUsed[k].y-this.y > -50){
             textures("Peck", breadUsed[k].x,breadUsed[k].y);
+            breadUsed[k].health--;
         }
     }
 };
@@ -157,7 +159,9 @@ draw = function() {
         for(var j = 0; j < breadUsed.length; j++){
             breadUsed[j].draw();
             breadUsed[j].move();
-            
+            if(breadUsed[j].health === 0){
+                breadUsed.splice(j,1);
+            }
         }
             o.draw();
             o.attack();
