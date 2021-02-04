@@ -164,7 +164,7 @@ draw = function() {
             }
         }
             o.draw();
-            o.attack();
+            setTimeout(o.attack(), 500);
    }
    
 };
