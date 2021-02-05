@@ -97,7 +97,7 @@ class Bird extends Entity {
 
 class Pecker extends Bird {
   constructor(x, y) {
-    super(x, y, 5, 100, 'Pecker');
+    super(x, y, 2, 100, 'Pecker');
   }
   attack() {
     for (var k in breadUsed) {
