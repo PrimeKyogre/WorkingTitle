@@ -164,9 +164,6 @@ for(var i = 0; i < levels[level-1].length; i++){
     placer -=20;
 }
 
-startGame = function() {
-  //let a = setInterval(o.attack, 500);
-}
 
 draw = function() {
    background(0,255,0);
