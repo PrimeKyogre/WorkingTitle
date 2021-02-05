@@ -104,6 +104,7 @@ class Pecker extends Bird {
       //console.log(Math.sqrt( Math.pow((this.x-breadUsed[k].x), 2) + Math.pow((this.y-breadUsed[k].y), 2) ));
       if (Math.sqrt( Math.pow((this.x-breadUsed[k].x), 2) + Math.pow((this.y-breadUsed[k].y), 2) ) <= this.range) {
         breadUsed[k].health--;
+        return;
       }
     }
   }
