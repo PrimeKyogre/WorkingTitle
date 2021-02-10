@@ -4,7 +4,7 @@ function setup() {
 }
 
 var m = 0;
-
+var crumbCounter = 0;
 interval = function() {
   if (startGame) {
     m++;
@@ -176,6 +176,10 @@ var textures = function(textureChoice,x,y){
         rect(x+310,y+190,100,20);
         
     }
+    else if(textureChoice === "Crumb"){
+        fill(168, 105, 34);
+        ellipse(x,y,10,10);
+    }
 };
 
 
@@ -215,7 +219,11 @@ draw = function() {
         fill(0,255,0);
         rect(0,0,400,400);
         textures("Path",0,0);
-        
+        stroke(0,0,0);
+        textSize(12);
+        fill(0,0,0);
+        text(crumbCounter,5,20);
+        textures("Crumb",40,15);
         for (var j in breadUsed) 
           breadUsed[j].draw();
       o.draw();
