@@ -59,7 +59,27 @@ class Bread extends Entity {
     this.health = health;
   }
   move() {
-    this.x += this.speed; //Until paths created
+    if(this.x <= 60){
+      this.x += this.speed; //Until paths created
+    }
+    else if(this.x >= 50 && this.y >=110&&this.x <=70){
+      this.y -= this.speed;
+    }
+    else if(this.y <= 110 && this.x >=60 && this.x <= 140){
+      this.x+= this.speed;
+    }
+    else if(this.x >= 140&&this.y<310&&this.x <200){
+      this.y+=this.speed;
+    }
+    else if(this.y>=310&&this.x<320){
+        this.x+=this.speed
+    }
+    else if(this.x>=315&&this.y>200){
+      this.y-=this.speed;
+    }
+    else if(this.y>=200){
+      this.x+=this.speed;
+    }
   }
 }
 
@@ -183,7 +203,13 @@ draw = function() {
         fill(0,255,0);
         rect(0,0,400,400);
         fill(255, 204, 0);
-        rect(0,175,400,50);
+        rect(0,190,50,20);
+        rect(50,100,20,110);
+        rect(50,100,80,20);
+        rect(130,100,20,200);
+        rect(130,300,180,20);
+        rect(310,190,20,130);
+        rect(310,190,100,20);
         
         for (var j in breadUsed) 
           breadUsed[j].draw();
