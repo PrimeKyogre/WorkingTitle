@@ -164,6 +164,18 @@ var textures = function(textureChoice,x,y){
         fill(255,255,255);
         ellipse(x,y,5,5);
     }
+    else if(textureChoice === "Path"){
+        noStroke();
+        fill(255, 204, 0);
+        rect(x,y+190,50,20);
+        rect(x+50,y+100,20,110);
+        rect(x+50,y+100,80,20);
+        rect(x+130,y+100,20,200);
+        rect(x+130,y+300,180,20);
+        rect(x+310,y+190,20,130);
+        rect(x+310,y+190,100,20);
+        
+    }
 };
 
 
@@ -202,14 +214,7 @@ draw = function() {
    if(startGame === true){
         fill(0,255,0);
         rect(0,0,400,400);
-        fill(255, 204, 0);
-        rect(0,190,50,20);
-        rect(50,100,20,110);
-        rect(50,100,80,20);
-        rect(130,100,20,200);
-        rect(130,300,180,20);
-        rect(310,190,20,130);
-        rect(310,190,100,20);
+        textures("Path",0,0);
         
         for (var j in breadUsed) 
           breadUsed[j].draw();
