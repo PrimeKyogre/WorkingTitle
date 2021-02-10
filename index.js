@@ -124,6 +124,7 @@ class Pecker extends Bird {
       //console.log(Math.sqrt( Math.pow((this.x-breadUsed[k].x), 2) + Math.pow((this.y-breadUsed[k].y), 2) ));
       if (Math.sqrt( Math.pow((this.x-breadUsed[k].x), 2) + Math.pow((this.y-breadUsed[k].y), 2) ) <= this.range) {
         breadUsed[k].health--;
+        crumbCounter++;
         return;
       }
     }
@@ -179,6 +180,12 @@ var textures = function(textureChoice,x,y){
     else if(textureChoice === "Crumb"){
         fill(168, 105, 34);
         ellipse(x,y,10,10);
+    }
+    else if(textureChoice === "SideArrow"){
+        fill(0,0,0);
+        ellipse(x,y,40,40);
+        fill(255,255,255);
+        triangle(x+10,y-10,x-10,y,x+10,y+10);
     }
 };
 
