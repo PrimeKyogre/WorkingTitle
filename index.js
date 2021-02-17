@@ -36,7 +36,7 @@ var levels = [
 var breadUsed = [];    
 var placer = 0;
 var startGame = false;
-
+var towerMenuIsOpen = false;
 class Entity {
   constructor(x, y, textureId) {
     this.x = x;
@@ -182,10 +182,22 @@ var textures = function(textureChoice,x,y){
         ellipse(x,y,10,10);
     }
     else if(textureChoice === "SideArrow"){
-        fill(0,0,0);
-        ellipse(x,y,40,40);
         fill(255,255,255);
         triangle(x+10,y-10,x-10,y,x+10,y+10);
+    }
+    else if(textureChoice === "TowerMenu"){
+      stroke(100,100,100);
+      fill(235, 175, 85);
+      rect(x,y,100,399);
+      fill(0,0,0);
+      stroke(0,0,0);
+      textSize(20);
+      text("Towers",x+17,y+50);
+      fill(200,200,200);
+      ellipse(x+50,y+100,50,50);
+      fill(255,255,255);
+      ellipse(x+50,y+100,20,20);
+      triangle(x+40,y+98,x+33,y+100,x+40,y+102);
     }
 };
 
@@ -231,9 +243,20 @@ draw = function() {
         fill(0,0,0);
         text(crumbCounter,5,20);
         textures("Crumb",40,15);
+        textures("SideArrow",380,15);
         for (var j in breadUsed) 
           breadUsed[j].draw();
       o.draw();
+        if(mouseIsPressed&&mouseX>300&&mouseY<50){
+           towerMenuIsOpen = true;
+        }
+        if(towerMenuIsOpen){
+          textures("TowerMenu",300,0);
+          textures("SideArrow",280,15);
+          if(mouseIsPressed&&mouseX>280&&mouseX<310&&mouseY<50){
+            towerMenuIsOpen = false;
+          }
+        }
    }
    
 };
