@@ -19,14 +19,6 @@ interval = function() {
       }
   }
 }
-
-/**
-Progress Log:
-Finished three textures
-Made level creator work for 3 breads
-3 bread functions
-Pecker being added
-**/
 var level = 2;
 var levels = [
     [1,1,1,1,1,1,1,1,1,1],
@@ -37,6 +29,8 @@ var breadUsed = [];
 var placer = 0;
 var startGame = false;
 var towerMenuIsOpen = false;
+var triggerTowerPlacement = false;
+var setTower;
 class Entity {
   constructor(x, y, textureId) {
     this.x = x;
@@ -200,7 +194,14 @@ var textures = function(textureChoice,x,y){
       triangle(x+40,y+98,x+33,y+100,x+40,y+102);
     }
 };
-
+var towerPlacement = function(tower){
+  if(tower==="Pecker"&&crumbCounter > 0){
+    textures("Pecker",mouseX,mouseY);
+  }
+  if(mouseIsPressed){
+    
+  }
+}
 
 var o = new Pecker(200,230);
 //}
@@ -256,7 +257,15 @@ draw = function() {
           if(mouseIsPressed&&mouseX>280&&mouseX<310&&mouseY<50){
             towerMenuIsOpen = false;
           }
+          if(mouseIsPressed&& mouseX<375&& mouseY<125&&mouseY>75&&mouseX>325){
+            triggerTowerPlacement = true;
+            setTower = "Pecker";
+          }
         }
+          if(triggerTowerPlacement === true){
+            towerPlacement(setTower,mouseX,mouseY);
+            towerMenuIsOpen = false; 
+          }
    }
    
 };
